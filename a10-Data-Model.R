@@ -1,6 +1,7 @@
-###################################################
+##########################################################
 ### Projet Machine Learning - Elman NN -  la serie a10 ###
-###################################################
+############## author: BEN ZEKRI Nouriddin ###############
+##########################################################
 
 ## Les packages necessaires ###
 
@@ -10,7 +11,7 @@ require (quantmod)
 require(RSNNS)
 
 ######## data partitioning ########
-# a10 du 7/1991 à 6/2008
+# a10 du 7/1991 Ã  6/2008
 a10_window <- window(a10, start=c(1991, 7), end=c(2008, 6))
 plot(a10_window)
 seasonplot(a10, col='blue')
@@ -18,7 +19,7 @@ x1 <- ts(a10)
 plot(x1)
 View(x1)
 boxplot(x1)
-hist(x1,prob=TRUE, col="grey",main= 'Distribution et Densité de la série X1')# prob=TRUE for probabilities not counts
+hist(x1,prob=TRUE, col="grey",main= 'Distribution et DensitÃ© de la sÃ©rie X1')# prob=TRUE for probabilities not counts
 lines(density(x1), col="blue", lwd=2)
 summary(x1)
 
@@ -35,7 +36,7 @@ trainingSet <- ts(train)
 validSet <- ts(valid)
 testSet <- ts(test)
 head(a10)
-# Normaliser les données avec la methode MinMAx #
+# Normaliser les donnÃ©es avec la methode MinMAx #
 min_data <- min(x1)
 max_data <- max(x1)
 MinMax_data <- function (x) {
@@ -67,7 +68,7 @@ pacf(y)
 ########### test ##############
 y <- MinMax_data(x1)
 plot(y)
-## preparer les entrées de notre modèle
+## preparer les entrÃ©es de notre modÃ¨le
 require (quantmod)
 split_lag_data <- function (data) {
   y <- as.zoo(data)
@@ -118,7 +119,7 @@ RMSE(outputs, fit$fitted.values)
 MSE.fit <- mse(outputs,fit$fitted.values )
 MSE.fit
 #                    #
-# tester le modele sur les données de validation
+# tester le modele sur les donnÃ©es de validation
 
 dataV <- split_lag_data(validSet.nor)
 indataV <- dataV[,2:4]
@@ -137,7 +138,7 @@ plot(trainingSet.nor, type = 'line')
 lines(fit$fitted.values, col='red')
 
 ############ Predict ############
-### tester le model sur toute la série
+### tester le model sur toute la sÃ©rie
 data1 <- split_lag_data(MinMax_data(x1))
 indata <- data1[,2:4]
 outdata <- data1[,1]
@@ -154,7 +155,7 @@ RMSE(outdata, pred)
 # regularzation # No solution founded 
 # to add the lambda parameter!!
 
-## Dé-normaliser les données 
+## DÃ©-normaliser les donnÃ©es 
 unscale_data <- function (x)
 {
   x * (max_data - min_data) + min_data
@@ -165,7 +166,7 @@ lines(output_pred, col = "red", lwd=2)
 legend(
   'topleft',
   # places a legend at the appropriate place
-  c("a10", "Prévision"),
+  c("a10", "PrÃ©vision"),
   # puts text in the legend
   # gives the legend appropriate symbols (lines)
   lwd = c(1.5, 2),
