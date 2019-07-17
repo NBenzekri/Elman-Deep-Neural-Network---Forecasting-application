@@ -10,7 +10,7 @@ Elman Deep Neural Network in Forecasting application using R programming tested 
 ## Sun Spot dataset results:
 #### With Elman Neural net
 ![Elman Model](https://i.imgur.com/bARI87T.png)
-#### With AMIMA model:
+#### With ARIMA model:
 ![Arima model ](https://i.imgur.com/Jd2sm9T.png)
 
 
